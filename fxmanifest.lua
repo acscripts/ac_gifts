@@ -15,3 +15,6 @@ server_scripts {
 }
 
 client_script 'client/main.lua'
+
+
+dependency 'ox_inventory'
