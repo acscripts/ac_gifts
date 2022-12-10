@@ -20,7 +20,7 @@ Inventory:registerHook('createItem', function(payload)
 
 	return metadata
 end, {
-	itemFilter = { giftbox = true }
+	itemFilter = { [ac.items.emptyGift] = true }
 })
 
 -- wrap gift box
@@ -35,7 +35,7 @@ RegisterNetEvent('ac_gifts:wrapGift', function(slot)
 		metadata.id = metadata.container
 		metadata.container = nil
 
-		Inventory:AddItem(playerId, 'gift', 1, metadata, slot)
+		Inventory:AddItem(playerId, ac.items.gift, 1, metadata, slot)
 	end
 end)
 
@@ -50,7 +50,7 @@ exports('unwrapGift', function(event, _, inventory, slot)
 			metadata.container = metadata.id
 			metadata.id = nil
 
-			Inventory:AddItem(inventory.id, 'opened_gift', 1, metadata, slot)
+			Inventory:AddItem(inventory.id, ac.items.openedGift, 1, metadata, slot)
 		end
 	end
 end)

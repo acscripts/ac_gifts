@@ -6,4 +6,10 @@ ac = {
 	},
 
 	defaultSize = 'medium',
+
+	items = {
+		gift = 'gift',
+		emptyGift = 'empty_gift',
+		openedGift = 'opened_gift',
+	}
 }
