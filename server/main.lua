@@ -54,3 +54,8 @@ exports('unwrapGift', function(event, _, inventory, slot)
 		end
 	end
 end)
+
+-- check for neweset version
+if ac.checkVersion and GetResourceState('ox_lib') == 'started' then
+	exports.ox_lib:versionCheck('acscripts/ac_gifts')
+end
