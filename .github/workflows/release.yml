@@ -26,7 +26,7 @@ jobs:
         run: |
           mkdir -p ./temp/ac_gifts
           cp ./{LICENSE,README.md,fxmanifest.lua,config.lua} ./temp/ac_gifts
-          cp -r ./{server} ./temp/ac_gifts
+          cp -r ./server ./temp/ac_gifts
           cd ./temp && zip -r ../ac_gifts.zip ./ac_gifts
 
       - name: Create release
