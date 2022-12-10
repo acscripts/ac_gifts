@@ -28,7 +28,7 @@ RegisterNetEvent('ac_gifts:wrapGift', function(slot)
 	local playerId = source
 	local item = Inventory:GetSlot(playerId, slot)
 
-	local removed = Inventory:RemoveItem(playerId, item.name, 1, item.metadata, slot)
+	local removed = Inventory:RemoveItem(playerId, ac.items.emptyGift, 1, item.metadata, slot)
 	if removed then
 		-- change 'container' to 'id' to prevent the item from being opened as a container
 		local metadata = item.metadata
@@ -44,7 +44,7 @@ exports('unwrapGift', function(event, _, inventory, slot)
 	if event == 'usingItem' then
 		local item = Inventory:GetSlot(inventory.id, slot)
 
-		local removed = Inventory:RemoveItem(inventory.id, item.name, 1, item.metadata, slot)
+		local removed = Inventory:RemoveItem(inventory.id, ac.items.gift, 1, item.metadata, slot)
 		if removed then
 			local metadata = item.metadata
 			metadata.container = metadata.id
