@@ -1,14 +1,7 @@
 local Inventory = exports.ox_inventory
 
-local DefaultSize = 'medium'
-local Sizes = {
-	small = {1, 1000},
-	medium = {3, 5000},
-	large = {5, 15000},
-}
-
 local function getSize(type)
-	return Sizes[type] or Sizes[DefaultSize] or {3, 5000}
+	return ac.sizes[type] or ac.sizes[ac.defaultSize] or {3, 5000}
 end
 
 local function sizesMatches(size1, size2)
