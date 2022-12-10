@@ -21,5 +21,5 @@ ac = {
 	},
 
 	-- Checks for latest version (recommended)
-	checkVersion = true,
+	versionCheck = true,
 }
