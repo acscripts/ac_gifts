@@ -1,14 +1,5 @@
 local Inventory = exports.ox_inventory
 
-local function getSize(type)
-	return ac.sizes[type] or ac.sizes[ac.defaultSize] or {3, 5000}
-end
-
-local function sizesMatches(size1, size2)
-	return size1[1] == size2[1] and size1[2] == size2[2]
-end
-
-
 -- convert gift type to size
 Inventory:registerHook('createItem', function(payload)
 	local metadata = payload.metadata
@@ -54,8 +45,3 @@ exports('unwrapGift', function(event, _, inventory, slot)
 		end
 	end
 end)
-
--- check for neweset version
-if ac.versionCheck and GetResourceState('ox_lib') == 'started' then
-	exports.ox_lib:versionCheck('acscripts/ac_gifts')
-end

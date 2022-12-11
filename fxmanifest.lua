@@ -12,6 +12,7 @@ server_only 'yes'
 
 server_scripts {
   'config.lua',
+  'server/utils.lua',
   'server/main.lua',
 }
 
