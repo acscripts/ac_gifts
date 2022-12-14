@@ -6,8 +6,8 @@ Inventory:registerHook('createItem', function(payload)
 
 	if not metadata.size or not sizesMatches(metadata.size, getSize(metadata.type)) then
 		metadata.size = getSize(metadata.type)
-		metadata.type = nil
 	end
+	metadata.type = nil
 
 	return metadata
 end, {
@@ -44,4 +44,38 @@ exports('unwrapGift', function(event, _, inventory, slot)
 			Inventory:AddItem(inventory.id, ac.items.openedGift, 1, metadata, slot)
 		end
 	end
+end)
+
+-- get packed gift
+local function addGift(playerId, content)
+	-- get content from predefined gift name
+	if type(content) == 'string' and Gifts[content] then
+		content = Gifts[content]
+	end
+
+	if type(content.size) ~= 'string' then
+		print('Gift size is not a string - using default size.')
+		content.size = ac.defaultSize
+	end
+
+	-- give empty gift box to a player
+	local success, response = Inventory:AddItem(playerId, ac.items.emptyGift, 1, content.size)
+
+	if not success then
+		print(('Failed to add gift to %s: %s'):format(playerId, response))
+		return false, response
+	end
+
+	local metadata = response[1].metadata
+	for i=1, #content.items do
+		local item = content.items[i]
+		Inventory:AddItem(metadata.container, item.name, item.count, item.metadata, i)
+	end
+end
+
+RegisterCommand('gift', function(source, args)
+	addGift(source, args[1] or 'example')
+
+	local item = Inventory:GetSlot(source, 1)
+	print('final', json.encode(item.metadata))
 end)
