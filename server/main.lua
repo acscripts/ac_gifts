@@ -15,8 +15,8 @@ Inventory:registerHook('createItem', function(payload)
 
 	if not metadata.size or not sizesMatches(metadata.size, getSize(metadata.type)) then
 		metadata.size = getSize(metadata.type)
-		metadata.type = nil
 	end
+	metadata.type = nil
 
 	return metadata
 end, {
