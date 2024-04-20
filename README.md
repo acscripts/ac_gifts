@@ -10,7 +10,7 @@ Report bugs using [GitHub issues](https://github.com/acscripts/ac_gifts/issues).
 - Easy size configuration
 
 ### Documentation
-https://docs.dejv.it/ac_gifts
+https://docs.acscripts.dev/gifts
 
 ### Preview
 https://youtu.be/zzu1RAk8A4U
